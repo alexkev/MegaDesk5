@@ -1,0 +1,122 @@
+[
+  {
+    "CustomerName": "Alex",
+    "NumShippingDays": 3,
+    "QuoteDate": "2019-02-07T11:00:12.89258-07:00",
+    "Quote": 860.0,
+    "ShippingCost": 60.0,
+    "StructureCost": 500.0,
+    "SurfaceCost": 300.0,
+    "Desk": {
+      "Width": 20.00,
+      "Depth": 20.00,
+      "NumDrawers": 6,
+      "Material": 0
+    }
+  },
+  {
+    "CustomerName": "Wen",
+    "NumShippingDays": 3,
+    "QuoteDate": "2019-02-07T11:32:49.2569688-07:00",
+    "Quote": 760.0,
+    "ShippingCost": 60.0,
+    "StructureCost": 400.0,
+    "SurfaceCost": 300.0,
+    "Desk": {
+      "Width": 2.0,
+      "Depth": 2.0,
+      "NumDrawers": 4,
+      "Material": 0
+    }
+  },
+  {
+    "CustomerName": "Wen",
+    "NumShippingDays": 3,
+    "QuoteDate": "2019-02-07T11:34:55.9514076-07:00",
+    "Quote": 660.0,
+    "ShippingCost": 60.0,
+    "StructureCost": 300.0,
+    "SurfaceCost": 300.0,
+    "Desk": {
+      "Width": 20.00,
+      "Depth": 20.00,
+      "NumDrawers": 2,
+      "Material": 0
+    }
+  },
+  {
+    "CustomerName": "Wen",
+    "NumShippingDays": 3,
+    "QuoteDate": "2019-02-07T11:36:40.6021256-07:00",
+    "Quote": 610.0,
+    "ShippingCost": 60.0,
+    "StructureCost": 250.0,
+    "SurfaceCost": 300.0,
+    "Desk": {
+      "Width": 20.00,
+      "Depth": 20.00,
+      "NumDrawers": 1,
+      "Material": 0
+    }
+  },
+  {
+    "CustomerName": "Wen",
+    "NumShippingDays": 3,
+    "QuoteDate": "2019-02-07T12:01:31.4766116-07:00",
+    "Quote": 710.0,
+    "ShippingCost": 60.0,
+    "StructureCost": 350.0,
+    "SurfaceCost": 300.0,
+    "Desk": {
+      "Width": 20.00,
+      "Depth": 20.00,
+      "NumDrawers": 3,
+      "Material": 0
+    }
+  },
+  {
+    "CustomerName": "Alex",
+    "NumShippingDays": 5,
+    "QuoteDate": "2019-02-07T12:04:11.0479688-07:00",
+    "Quote": 740.0,
+    "ShippingCost": 40.0,
+    "StructureCost": 400.0,
+    "SurfaceCost": 300.0,
+    "Desk": {
+      "Width": 20.00,
+      "Depth": 20.00,
+      "NumDrawers": 4,
+      "Material": 0
+    }
+  },
+  {
+    "CustomerName": "Alex",
+    "NumShippingDays": 5,
+    "QuoteDate": "2019-02-07T12:04:13.794832-07:00",
+    "Quote": 740.0,
+    "ShippingCost": 40.0,
+    "StructureCost": 400.0,
+    "SurfaceCost": 300.0,
+    "Desk": {
+      "Width": 20.00,
+      "Depth": 20.00,
+      "NumDrawers": 4,
+      "Material": 0
+    }
+  },
+  {
+    "CustomerName": "Alex",
+    "NumShippingDays": 3,
+    "QuoteDate": "2019-02-07T12:06:35.7945924-07:00",
+    "Quote": 710.0,
+    "ShippingCost": 60.0,
+    "StructureCost": 350.0,
+    "SurfaceCost": 300.0,
+    "Desk": {
+      "Width": 20.00,
+      "Depth": 20.00,
+      "NumDrawers": 3,
+      "Material": 0
+    }
+  }
+]

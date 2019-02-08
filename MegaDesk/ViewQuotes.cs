@@ -1,12 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MegaDesk
@@ -28,21 +24,24 @@ namespace MegaDesk
 
         private void loadGrid()
         {
-            try
-            {
-                string[] deskQuotes = File.ReadAllLines(@"quotes.txt");
-                foreach (string deskQuote in deskQuotes)
-                {
-                    string[] arrRow = deskQuote.Split(new char[] { ',' });
-                    dataGridView1.Rows.Add(arrRow);
+                var quotesFile = @"quotes.json";
+                using (StreamReader reader = new StreamReader(quotesFile)) {
+                    // load existing quotes
+                    string quotes = reader.ReadToEnd();
+                    List<DeskQuote> deskQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
+
+                    dataGridView1.DataSource = deskQuotes.Select(d => new
+                    {
+                        Date = d.QuoteDate,
+                        Customer = d.CustomerName,
+                        Width = d.Desk.Width,
+                        Depth = d.Desk.Depth,
+                        NumberOfDrawers = d.Desk.NumDrawers,
+                        SurfaceMaterials = d.Desk.Material,
+                        DeliveryType = d.NumShippingDays,
+                        QuotePrice = d.Quote
+                    }).ToList();
                 }
-
-            }
-            catch (FileNotFoundException)
-            {
-
-            }
-
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -30,14 +30,6 @@
         {
             this.exit = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.CustomerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Depth = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Width = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NumberofDrawers = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Material = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DevliverType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.QuotePrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,65 +46,11 @@
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CustomerName,
-            this.Date,
-            this.Depth,
-            this.Width,
-            this.NumberofDrawers,
-            this.Material,
-            this.DevliverType,
-            this.QuotePrice});
             this.dataGridView1.Location = new System.Drawing.Point(47, 63);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.Size = new System.Drawing.Size(670, 351);
             this.dataGridView1.TabIndex = 5;
-            // 
-            // CustomerName
-            // 
-            this.CustomerName.HeaderText = "Customer Name";
-            this.CustomerName.Name = "CustomerName";
-            this.CustomerName.Width = 120;
-            // 
-            // Date
-            // 
-            this.Date.HeaderText = "Date";
-            this.Date.Name = "Date";
-            this.Date.Width = 75;
-            // 
-            // Depth
-            // 
-            this.Depth.HeaderText = "Depth";
-            this.Depth.Name = "Depth";
-            this.Depth.Width = 50;
-            // 
-            // Width
-            // 
-            this.Width.HeaderText = "Width";
-            this.Width.Name = "Width";
-            this.Width.Width = 50;
-            // 
-            // NumberofDrawers
-            // 
-            this.NumberofDrawers.HeaderText = "Number of Drawers";
-            this.NumberofDrawers.Name = "NumberofDrawers";
-            this.NumberofDrawers.Width = 50;
-            // 
-            // Material
-            // 
-            this.Material.HeaderText = "Material";
-            this.Material.Name = "Material";
-            // 
-            // DevliverType
-            // 
-            this.DevliverType.HeaderText = "Devliver Type";
-            this.DevliverType.Name = "DevliverType";
-            // 
-            // QuotePrice
-            // 
-            this.QuotePrice.HeaderText = "Quote Price";
-            this.QuotePrice.Name = "QuotePrice";
             // 
             // ViewQuotes
             // 
@@ -132,13 +70,5 @@
 
         private System.Windows.Forms.Button exit;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CustomerName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Depth;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Width;
-        private System.Windows.Forms.DataGridViewTextBoxColumn NumberofDrawers;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Material;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DevliverType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn QuotePrice;
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +13,9 @@ using System.Windows.Forms;
 namespace MegaDesk
 {
     public partial class SearchQuotes : Form
-    { 
+    {
+        private Desk.DesktopMaterial materials;
+
         public SearchQuotes()
         {
             InitializeComponent();
@@ -35,38 +38,50 @@ namespace MegaDesk
 
         private void loadGrid()
         {
-            try
+            var quotesFile = @"quotes.json";
+            using (StreamReader reader = new StreamReader(quotesFile))
             {
-                string[] deskQuotes = File.ReadAllLines(@"quotes.txt");
-                foreach (string deskQuote in deskQuotes)
+                // load existing quotes
+                string quotes = reader.ReadToEnd();
+                List<DeskQuote> deskQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
+
+                dataGridView2.DataSource = deskQuotes.Select(d => new
                 {
-                    string[] arrRow = deskQuote.Split(new char[] { ',' });
-                    dataGridView2.Rows.Add(arrRow);
-                }
-
-            }
-            catch (FileNotFoundException)
-            {
-
+                    Date = d.QuoteDate,
+                    Customer = d.CustomerName,
+                    Width = d.Desk.Width,
+                    Depth = d.Desk.Depth,
+                    NumberOfDrawers = d.Desk.NumDrawers,
+                    SurfaceMaterials = d.Desk.Material,
+                    DeliveryType = d.NumShippingDays,
+                    QuotePrice = d.Quote
+                }).ToList();
             }
 
         }
 
         private void comSearchMaterials(object sender, EventArgs e)
         {
-            string search = comSearchMaterial.SelectedValue.ToString();
-            System.Diagnostics.Debug.Write(search);
-
-            dataGridView2.Rows.Clear();
-
-            string[] deskQuotes = File.ReadAllLines(@"quotes.txt");
-            foreach (string deskQuote in deskQuotes)
+            var quotesFile = @"quotes.json";
+            using (StreamReader reader = new StreamReader(quotesFile))
             {
-                string[] arrRow = deskQuote.Split(new char[] { ',' });
-                if (deskQuote.Contains(search))
+                // load existing quotes
+                string quotes = reader.ReadToEnd();
+                List<DeskQuote> deskQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(quotes);
+
+                dataGridView2.DataSource = deskQuotes.Select(d => new
                 {
-                    dataGridView2.Rows.Add(arrRow);
-                }
+                    Date = d.QuoteDate,
+                    Customer = d.CustomerName,
+                    Width = d.Desk.Width,
+                    Depth = d.Desk.Depth,
+                    NumberOfDrawers = d.Desk.NumDrawers,
+                    SurfaceMaterials = d.Desk.Material,
+                    DeliveryType = d.NumShippingDays,
+                    QuotePrice = d.Quote
+                })
+                .Where(q => q.SurfaceMaterials == materials)
+                .ToList();
             }
         }
     }

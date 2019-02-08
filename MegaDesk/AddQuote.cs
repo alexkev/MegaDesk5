@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -56,13 +57,35 @@ namespace MegaDesk
             lblShippingCost.Text = deskQuote.GetShippingCost().ToString();
             lblTotalCost.Text = deskQuote.GetQuote().ToString();
 
-            AddQuotetoFile(deskQuote);
+
+
+            List<DeskQuote> deskQuotes = new List<DeskQuote>();
+            if (!File.Exists(@"quotes.json"))
+            {
+                deskQuotes.Add(deskQuote);
+                var list = JsonConvert.SerializeObject(deskQuotes);
+                File.WriteAllText(@"quotes.json", JsonConvert.SerializeObject(deskQuotes));
+            }
+            else
+            {
+                using (StreamReader reader = new StreamReader(@"quotes.json"))
+                {
+                    string allQuotes = reader.ReadToEnd();
+                    deskQuotes = JsonConvert.DeserializeObject<List<DeskQuote>>(allQuotes);
+                }
+                deskQuotes.Add(deskQuote);
+                var list = JsonConvert.SerializeObject(deskQuotes);
+                File.WriteAllText(@"quotes.json", list);
+            }
+
             var mainMenu = (MainMenu)Tag;
             mainMenu.Show();
         }
 
-        private void AddQuotetoFile(DeskQuote deskQuote)
+        private void AddQuotetoFile(List<DeskQuote> deskQuotes)
         {
+            File.WriteAllText(@"quotes.json", JsonConvert.SerializeObject(deskQuotes));
+            /**
             string quotesFile = "quotes.txt";
 
             using (StreamWriter streamwriter = File.AppendText(quotesFile))
@@ -77,6 +100,9 @@ namespace MegaDesk
                 $"{deskQuote.NumShippingDays} Days, " +
                 $"{deskQuote.Quote}");
             }
+            **/
+
+            // serialize JSON to a string and then write string to a file
         }
        
         private void cancelQuoteButton(object sender, EventArgs e)
