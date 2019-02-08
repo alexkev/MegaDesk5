@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,14 @@ namespace MegaDesk
 {
     public class DeskQuote
     {
+        //Constructor for rushOrder array calculation
+        public DeskQuote()
+        {
+            this.RushOrder = getRushOrder();
+        }
+
+        public int[,] RushOrder { get; set; }
+
         public string CustomerName { get; set; }
         public int NumShippingDays { get; set; }
         public DateTime QuoteDate { get; set; }
@@ -23,19 +32,55 @@ namespace MegaDesk
             return Quote;
         }
 
+        //**GET CURRENT PRICES BASED ON .txt**//
+        public int[,] getRushOrder()
+        {
+
+            string[] rushAmount = File.ReadAllLines(@"rushOrderPrices.txt");
+            int[,] rushAmountGrid = new int[3, 3];
+            int row;
+            int column;
+            int count = 0;
+
+            for (row = 0; row < 3; row++)
+            {
+                for (column = 0; column < 3; column++)
+                {
+                    rushAmountGrid[row, column] = int.Parse(rushAmount[count]);
+                    count++;
+                }
+            }
+            return rushAmountGrid;
+        }
+
         public decimal GetShippingCost()
         {
             decimal size = Desk.Width * Desk.Depth;
             switch (NumShippingDays)
             {
                 case 3:
-                    ShippingCost = 60;
+                    if (size < 1000)
+                        ShippingCost = this.RushOrder[0, 0];
+                    if (size > 1000 && size < 2000)
+                        ShippingCost = this.RushOrder[0, 1];
+                    else if (size > 2000)
+                        ShippingCost = this.RushOrder[0, 2];
                     break;
                 case 5:
-                    ShippingCost = 40;
+                    if (size < 1000)
+                        ShippingCost = this.RushOrder[1, 0];
+                    if (size > 1000 && size < 2000)
+                        ShippingCost = this.RushOrder[1, 1];
+                    else if (size > 2000)
+                        ShippingCost = this.RushOrder[1, 2];
                     break;
                 case 7:
-                    ShippingCost = 30;
+                    if (size < 1000)
+                        ShippingCost = this.RushOrder[2, 0];
+                    if (size > 1000 && size < 2000)
+                        ShippingCost = this.RushOrder[2, 1];
+                    else if (size > 2000)
+                        ShippingCost = this.RushOrder[2, 2];
                     break;
                 case 14:
                     ShippingCost = 0;
@@ -43,13 +88,6 @@ namespace MegaDesk
                 default:
                     break;
             }
-
-            if (size < 1000)
-                return ShippingCost;
-            else if (size > 1000 && size < 2000)
-                ShippingCost += 10;
-            else if (size > 2000)
-                ShippingCost += 20;
 
             return ShippingCost;
         }
@@ -62,7 +100,7 @@ namespace MegaDesk
 
         public decimal GetSurfaceCost()
         {
-            decimal size = Desk.Width + Desk.Depth;
+            decimal size = Desk.Width * Desk.Depth;
 
             switch (Desk.Material)
             {

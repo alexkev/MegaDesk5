@@ -38,6 +38,7 @@ namespace MegaDesk
                 desk.Width = width.Value;
                 desk.Depth = width.Value;
                 desk.NumDrawers = int.Parse(numDrawers.SelectedItem.ToString());
+                
                 desk.Material = (Desk.DesktopMaterial)comDesktopMaterials.SelectedValue;
 
                 deskQuote.Desk = desk;
@@ -48,7 +49,12 @@ namespace MegaDesk
                 deskQuote.StructureCost = deskQuote.GetStructureCost();
                 deskQuote.SurfaceCost = deskQuote.GetSurfaceCost();
                 deskQuote.Quote = deskQuote.GetQuote();
-        }
+
+                System.Diagnostics.Debug.WriteLine(desk.NumDrawers);
+                System.Diagnostics.Debug.WriteLine(deskQuote.StructureCost);
+                System.Diagnostics.Debug.WriteLine(deskQuote.ShippingCost);
+                System.Diagnostics.Debug.WriteLine(deskQuote.SurfaceCost);
+            }
             catch (Exception ex)
             {
 
@@ -81,6 +87,7 @@ namespace MegaDesk
 
             var mainMenu = (MainMenu)Tag;
             mainMenu.Show();
+            Close();
         }
 
         private void AddQuotetoFile(List<DeskQuote> deskQuotes)
