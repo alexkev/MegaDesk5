@@ -54,7 +54,7 @@
             // dataGridView2
             // 
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(46, 103);
+            this.dataGridView2.Location = new System.Drawing.Point(46, 107);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.RowHeadersWidth = 20;
             this.dataGridView2.Size = new System.Drawing.Size(671, 300);
@@ -63,8 +63,6 @@
             // comSearchMaterial
             // 
             this.comSearchMaterial.FormattingEnabled = true;
-            this.comSearchMaterial.Items.AddRange(new object[] {
-            "All Materials"});
             this.comSearchMaterial.Location = new System.Drawing.Point(46, 51);
             this.comSearchMaterial.Name = "comSearchMaterial";
             this.comSearchMaterial.Size = new System.Drawing.Size(201, 21);

@@ -21,13 +21,15 @@ namespace MegaDesk
             InitializeComponent();
             loadGrid();
 
-           var materials = Enum.GetValues(typeof(Desk.DesktopMaterial))
+            var materials = Enum.GetValues(typeof(Desk.DesktopMaterial))
                             .Cast<Desk.DesktopMaterial>()
                             .ToList();
 
-           comSearchMaterial.DataSource = materials;
+            comSearchMaterial.DataSource = materials;
 
-           comSearchMaterial.SelectedIndex = -1;
+            comSearchMaterial.SelectedIndex = -1;
+        
+            
         }
         private void cancelQuoteButton(object sender, EventArgs e)
         {
@@ -62,6 +64,9 @@ namespace MegaDesk
 
         private void comSearchMaterials(object sender, EventArgs e)
         {
+            var desktopMaterial = Enum.GetName(typeof(Desk.DesktopMaterial), comSearchMaterial.SelectedIndex).ToString();
+            System.Diagnostics.Debug.WriteLine(desktopMaterial);
+
             var quotesFile = @"quotes.json";
             using (StreamReader reader = new StreamReader(quotesFile))
             {
@@ -80,7 +85,7 @@ namespace MegaDesk
                     DeliveryType = d.NumShippingDays,
                     QuotePrice = d.Quote
                 })
-                .Where(q => q.SurfaceMaterials == materials)
+                .Where(q => q.SurfaceMaterials.ToString() == desktopMaterial)
                 .ToList();
             }
         }
